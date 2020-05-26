@@ -5,7 +5,7 @@ async function verificacao(email, token){
                     {   
                         to:email, 
                         subject: 'Valide seu Cadastro - Amigo Chocolate',
-                        html:`<h1>Amigo Chocolate</h1><p><a href='https://amigochocolate.netlify.app/?token=${token}'>Clique aqui</a> para validar seu cadastro</p>`
+                        html:`<h1>Amigo Chocolate</h1><p><a href='https://amigochocolate.netlify.app/?token=${token}'>Clique aqui</a> para validar seu cadastro. Caso o link não funcione, cole o endereço abaixo no navegador: <br /><b>https://amigochocolate.netlify.app/?token=${token} </b></p>`
                     }
                 )
 
