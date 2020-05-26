@@ -1,11 +1,13 @@
 const Usuario = require('../Models/Usuario');
 const jwt = require('jsonwebtoken')
+const cripto= require('../middleware/cripto');
 
 module.exports={
     async geraToken(request,response){
 
         let{email,senha}=request.body;
-        const UsuarioRetorno = await Usuario.findOne({email:email,senha:senha});
+        let criptosenha = cripto.criptografia(senha)
+        const UsuarioRetorno = await Usuario.findOne({email,senha:criptosenha});
 
         
         if(!UsuarioRetorno){
