@@ -46,7 +46,7 @@ module.exports={
         let {token}=request.body;
 
         try{
-            const UsuarioRetorno=await Usuario.updateOne({token},{$set:{verificado: true}});
+            const UsuarioRetorno=await Usuario.updateOne({token},{$set:{verificado: true, token: ""}});
             if(UsuarioRetorno.n==0){
                 return response.json({status:false,msg:"Link incorreto"});
             }else{
