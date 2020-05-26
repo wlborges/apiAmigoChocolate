@@ -31,7 +31,7 @@ module.exports={
                 token
             });
             envio_email.verificacao(email, token)
-            return response.json({status:true,msg:'Usuário cadastrado com sucesso!'});
+            return response.json({status:true,msg:'Usuário cadastrado com sucesso! Verifique seu email!'});
             
         }
         else if(!validaEmail[0].status){
