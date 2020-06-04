@@ -15,7 +15,7 @@ async function convite(email, user, grupo){
     {   
         to:email, 
         subject: 'Convite Amigo Chocolate',
-        html:`<h1>Amigo Chocolate</h1><p>${user.nome} (${user.email}) te convidou para participar do ${grupo}. Para aceitar, <a href='appamigochocolate.netlify.app'>clique aqui </a> para fazer seu cadastro</p>`
+        html:`<h1>Amigo Chocolate</h1><p>${user.nome} (${user.email}) te convidou para participar do ${grupo}. <a href='amigochocolate.netlify.app'>Clique aqui </a> para fazer seu cadastro</p>`
     })
     return true;
 }
