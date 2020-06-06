@@ -121,7 +121,6 @@ module.exports={
                        $setOnInsert: { defaultQty: 100 }
                     },
                     { upsert: true });
-                console.log(convidaUser);
 
                 //envia o convite para registrar
                 await envio_email.convite(email, request.user, grupo.nome);
@@ -152,7 +151,6 @@ module.exports={
         
     },
     async deleteParticipante(request,response){
-        console.log(request.body);
         const {_id,email}=request.body;
         
          try {

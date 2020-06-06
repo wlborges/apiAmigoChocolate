@@ -1,4 +1,7 @@
 const Usuario = require('../Models/Usuario');
+const Convite = require('../Models/Convite');
+const Grupo = require('../Models/Grupo');
+
 const cripto= require('../middleware/cripto');
 const token_email = require('../middleware/token_email');
 const envio_email = require('../middleware/envio_email');
@@ -46,10 +49,22 @@ module.exports={
         let {token}=request.body;
 
         try{
+            const getUsuario = await Usuario.findOne({token});
             const UsuarioRetorno=await Usuario.updateOne({token},{$set:{verificado: true, token: ""}});
             if(UsuarioRetorno.n==0){
                 return response.json({status:false,msg:"Link incorreto"});
             }else{
+                const conviteRetorno = await Convite.findOneAndRemove({email:getUsuario.email});
+                const UsuarioRetorno=await Usuario.findOne({email:getUsuario.email});
+                const GrupoRetorno = await Grupo.update({_id:conviteRetorno.idGrupo},{$push:{
+                    participantes:{
+                    _id:UsuarioRetorno._id,
+                    nome:UsuarioRetorno.nome,
+                    email:UsuarioRetorno.email,
+                    dataNascimento:UsuarioRetorno.dataNascimento,
+                    status:UsuarioRetorno.status,
+                    amigo:""
+                }}});
                 return response.json({status:true,msg:'Email verificado com sucesso!'});
             }
         }catch{
