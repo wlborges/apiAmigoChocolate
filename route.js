@@ -41,7 +41,7 @@ route.post('/grupo/participante',auth,GrupoController.deleteParticipante);
 route.put('/grupo/listadesejos',auth,GrupoController.addLista);
 //sorteio
 route.get('/grupo/sorteio/:_id',auth,GrupoController.sorteio);   //sortear
-route.post('/grupo/sorteio/:_id',auth,GrupoController.deleteSorteio); //delete sorteio
+route.post('/grupo/sorteio',auth,GrupoController.deleteSorteio); //delete sorteio
 
 //lista nos grupos
 route.put('/grupo/addlista',auth,GrupoController.addLista);   //adiciona lista de desejos ao participante
